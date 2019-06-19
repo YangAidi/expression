@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 /**
  * @program: expression
  * @author: YangAidi
@@ -17,14 +15,11 @@ public class BinaryTreeExpression {
     public static final char INT = '0';
 
     public static void main(String[] args) {
-        BinaryTreeExpression expression = new BinaryTreeExpression("(1+2)*2*6-2*9");
-
+        BinaryTreeExpression expression = new BinaryTreeExpression("-2*2");
         BinarySearchTree bst = new BinarySearchTree();
         bst.root = expression.expression();
         System.out.println(postOrder(bst.root));
-
     }
-
 
     public BinaryTreeExpression(String expression) {
         chars = expression.toCharArray();
@@ -112,15 +107,16 @@ public class BinaryTreeExpression {
                     throw new Exception("Illegal Expression!");
                 }
                 return v;
+            } else if (c >= '0' && c <= '9') {
+                ++index;
+                return new Node(c, INT);
             } else if (match(MINUS)) {
-                Node v = new Node(0, INT);
+                // 处理负数
+                Node v = new Node('0', INT);
                 Node root = new Node(MINUS);
                 root.left = v;
                 root.right = factor();
                 return root;
-            } else if (c >= '0' && c <= '9') {
-                ++index;
-                return new Node(c, INT);
             } else {
                 throw new Exception("Illegal Expression!");
             }
@@ -138,5 +134,4 @@ public class BinaryTreeExpression {
         }
         return false;
     }
-
 }
