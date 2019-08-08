@@ -19,7 +19,6 @@ public class LogicExpression {
         System.out.println(postOrder(bst.root));
     }
 
-
     public LogicExpression(String expression) {
         chars = expression.toCharArray();
         index = 0;
@@ -89,7 +88,7 @@ public class LogicExpression {
                 ++index;
                 return new LogicNode(c);
             } else if (match(NOT)) {
-                // 非得生成逻辑
+                // 非的生成逻辑
                 LogicNode v = new LogicNode(c);
                 LogicNode root = new LogicNode(NOT);
                 root.left = v;

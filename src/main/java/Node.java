@@ -11,6 +11,7 @@ public class Node {
 
     public Node(int d, char type) {
         this.type = type;
+        // 注意这个小细节
         this.data = d - 48;
     }
 
