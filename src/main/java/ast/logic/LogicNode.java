@@ -1,3 +1,5 @@
+package ast.logic;
+
 /**
  * @program: expression
  * @author: YangAidi
